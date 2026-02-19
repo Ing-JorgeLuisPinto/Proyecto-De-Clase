@@ -1,53 +1,40 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<title>Crear</title>
-<link rel=stylesheet href="{{ asset('css/style.css') }}">
 
-</head>
-<body>
+@extends('layout.app')
 
-<nav class="navbar">
-<a class="navbar-brand">JetProduct</a>
-<ul class="navbar-links">
-<li><a href="index.html">Dashboard</a></li>
-<li><a href="show.html">Inventario</a></li>
-<li><a href="create.html">Crear</a></li>
-</ul>
-</nav>
-
-<div class="container">
-<h1>Nuevo Producto</h1>
-
-<form id="form">
-<input placeholder="Nombre" id="nombre">
-<input placeholder="Precio" type="number" id="precio">
-<input placeholder="Descripción" id="descripcion">
-<input placeholder="URL Imagen" id="imagen">
-<select id="estado">
-<option value="true">Activo</option>
-<option value="false">Inactivo</option>
-</select>
-<button>Guardar</button>
-</form>
-</div>
-
-<footer class="footer">2026 JetProduct Inc. - Built for Developers</footer>
-
-<script src="app.js"></script>
-<script>
-document.getElementById("form").onsubmit=e=>{
-e.preventDefault();
-guardarProducto({
-nombre:nombre.value,
-precio:Number(precio.value),
-descripcion:descripcion.value,
-imagen:imagen.value,
-estado:estado.value==="true"
-});
-location.href="show.html";
-}
-</script>
-</body>
-</html>
+@section('content')
+    <div class="create-container">
+    <div class="form-card">
+        <h2>Agregar Producto</h2>
+        <form>
+            <div class="form-group">
+                <label for="id_producto">ID Producto</label>
+                <input type="text" id="id_producto" name="id_producto">
+            </div>
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre">
+            </div>
+            <div class="form-group">
+                <label for="precio">Precio</label>
+                <input type="number" id="precio" name="precio">
+            </div>
+            <div class="form-group">
+                <label for="descripcion">Descripción</label>
+                <textarea id="descripcion" name="descripcion" rows="4"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="imagen">URL Imagen</label>
+                <input type="text" id="imagen" name="imagen">
+            </div>
+            <div class="form-group">
+                <label for="estado">Estado</label>
+                <select id="estado" name="estado">
+                    <option value="disponible">Disponible</option>
+                    <option value="agotado">Agotado</option>
+                </select>
+            </div>
+            <button type="submit" class="submit-btn">Guardar Producto</button>
+        </form>
+    </div>
+    </div>
+@endsection
