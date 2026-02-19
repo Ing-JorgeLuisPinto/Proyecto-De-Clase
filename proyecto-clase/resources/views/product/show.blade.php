@@ -4,92 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Administración de Productos</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
-<style>
-:root{
-  --primary:#6C5CE7;
-  --secondary:#00F5D4;
-  --accent:#FF006E;
-  --dark:#0f172a;
-  --card:#111827;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-body{
-  font-family:'Poppins',sans-serif;
-  background:linear-gradient(135deg,#020617,#0f172a,#020617);
-  color:white;
-  padding:25px;
-}
+<link rel=stylesheet href="{{ asset('css/style.css') }}">
 
-h1{
-  text-align:center;
-  margin-bottom:25px;
-  font-size:2rem;
-  font-weight:800;
-  background:linear-gradient(90deg,var(--primary),var(--secondary),var(--accent));
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
 
-.table-container{
-  background:var(--card);
-  border-radius:18px;
-  padding:20px;
-  box-shadow:0 15px 35px rgba(0,0,0,.45);
-  border:1px solid rgba(255,255,255,.05);
-}
-
-table{width:100%;border-collapse:separate;border-spacing:0 10px}
-
-thead tr{
-  background:linear-gradient(90deg,var(--primary),var(--accent));
-}
-
-th,td{padding:14px 12px;text-align:left;font-size:.95rem}
-
-th:first-child{border-top-left-radius:12px}
-th:last-child{border-top-right-radius:12px}
-
-tbody tr{
-  background:#0b1220;
-  transition:.25s ease;
-  box-shadow:0 6px 14px rgba(0,0,0,.35);
-}
-
-tbody tr:hover{
-  transform:translateY(-3px) scale(1.01);
-  box-shadow:0 12px 28px rgba(0,0,0,.6);
-}
-
-.selected{
-  outline:2px solid var(--secondary);
-  background:rgba(0,245,212,.08);
-}
-
-img{width:60px;height:60px;object-fit:cover;border-radius:10px}
-
-.badge{padding:6px 12px;border-radius:20px;font-size:.8rem;font-weight:700}
-.activo{background:rgba(0,245,212,.15);color:var(--secondary)}
-.inactivo{background:rgba(255,0,110,.15);color:var(--accent)}
-
-.btn{
-  padding:6px 12px;
-  border:none;
-  border-radius:8px;
-  cursor:pointer;
-  font-size:.8rem;
-  font-weight:600;
-  color:white;
-  transition:.25s;
-}
-
-.edit{background:linear-gradient(90deg,var(--primary),var(--secondary))}
-.delete{background:linear-gradient(90deg,var(--accent),#ff4d4d)}
-
-.btn:hover{filter:brightness(1.3);letter-spacing:.5px}
-
-.check{width:18px;height:18px;cursor:pointer}
-</style>
 </head>
 <body>
 <h1>Gestión de Productos</h1>
