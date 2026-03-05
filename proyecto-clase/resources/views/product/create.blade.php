@@ -5,11 +5,9 @@
     <div class="create-container">
     <div class="form-card">
         <h2>Agregar Producto</h2>
-        <form>
-            <div class="form-group">
-                <label for="id_producto">ID Producto</label>
-                <input type="text" id="id_producto" name="id_producto">
-            </div>
+        <form action ="{{route('product.store')}}" method="POST" enctype="multipart/form-data">
+            @csrf
+
             <div class="form-group">
                 <label for="nombre">Nombre</label>
                 <input type="text" id="nombre" name="nombre">
@@ -23,14 +21,16 @@
                 <textarea id="descripcion" name="descripcion" rows="4"></textarea>
             </div>
             <div class="form-group">
-                <label for="imagen">URL Imagen</label>
-                <input type="text" id="imagen" name="imagen">
+                <label for="imagen">Imagen del producto</label>
+                <input type="file" id="imagen" name="imagen" accept="image/*">
             </div>
             <div class="form-group">
-                <label for="estado">Estado</label>
+                <label for="estado">Categoria</label>
                 <select id="estado" name="estado">
-                    <option value="disponible">Disponible</option>
-                    <option value="agotado">Agotado</option>
+                    @foreach($categoryList as $category)
+                        <option value="{{$category->id}}">{{$category->name}}</option>
+                    @endforeach
+                   
                 </select>
             </div>
             <button type="submit" class="submit-btn">Guardar Producto</button>
