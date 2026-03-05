@@ -7,6 +7,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Category;
 use App\Models\Cartitem;
+use App\Models\Product;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,8 +23,9 @@ class DatabaseSeeder extends Seeder
             ProductSeeder::class,
         ]);*/
      //Category::factory(1000)->create();
-     User::factory(1000)->create();
-     Cartitem::factory(20000)->create();
+    // User::factory(1000)->create();
+    Product::factory(50)->create();
+    // Cartitem::factory(20000)->create();
    //Category::factory(10000)->create();
 
      
