@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Category;
-use App\Models\Cartitem;
+use App\Models\CartItem;
 use App\Models\Product;
 
 class DatabaseSeeder extends Seeder
@@ -18,15 +18,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-       /*this->call([
+        
+
+     /*  $this->call([
             CategorySeeder::class,
             ProductSeeder::class,
         ]);*/
-     //Category::factory(1000)->create();
-    // User::factory(1000)->create();
-    Product::factory(50)->create();
-    // Cartitem::factory(20000)->create();
-   //Category::factory(10000)->create();
+
+     // Category::factory(10000)->create();
+
+      // User::factory(1000)->create();
+     //  Product::factory(100000)->create();
+     //  Cartitem::factory(20000)->create();
 
      
     }

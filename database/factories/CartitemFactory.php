@@ -3,21 +3,20 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Cartitem;
+use App\Models\User;
+use App\Models\Product;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
- */
 class CartitemFactory extends Factory
 {
-   
     protected $model = Cartitem::class;
+
     public function definition(): array
     {
         return [
-            'product_id' => User::onRandomOrder()->first()->id,
+            'user_id' => User::inRandomOrder()->first()->id,
             'product_id' => Product::inRandomOrder()->first()->id,
-            'quantity' => fake()->numberBetween(1, 5),
-
+            'quantity' => $this->faker->numberBetween(1, 5),
         ];
     }
 }
