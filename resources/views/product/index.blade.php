@@ -31,14 +31,11 @@
         <div class="card" data-name="{{ strtolower($producto->name) }}">
           
           <span class="badge">{{ $producto->category->name ?? 'Sin categoría' }}</span>
+
           @if ($producto->image)
-
               <img src="{{ asset('storage/' .$producto->image) }}" alt="">
-
           @else
               <img src="https://gaceta.cch.unam.mx/sites/default/files/styles/imagen_articulos_1920x1080/public/2023-09/pag_62.jpg?h=208bb47f&itok=Nj1QrlLd" alt="">
-
-
           @endif
 
           <h3>{{ $producto->name }}</h3>
@@ -52,6 +49,7 @@
           </p>
 
           <div class="actions">
+
             <a href="{{ route('product.show', $producto) }}" class="btn save">
               Ver producto
             </a>
@@ -59,6 +57,15 @@
             <button class="btn cancel" type="button">
               Agregar al carrito
             </button>
+
+            <form action="{{ route('product.destroy', $producto) }}" method="POST" onsubmit="return confirm('¿Seguro que deseas eliminar este producto?');">
+              @csrf
+              @method('DELETE')
+              <button type="submit" class="btn delete">
+                Eliminar
+              </button>
+            </form>
+
           </div>
 
         </div>
