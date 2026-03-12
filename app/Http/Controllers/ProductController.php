@@ -28,12 +28,23 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
+        //VALIDACION
+        $request->validate([
+            'name' => 'required|min:5|max:250',
+            'price' => 'required|numeric',
+            'description' => 'required',
+            'image' => 'required|image',
+            'category' => 'required|exists:categories,id'
+            
+        ]);
+
+
         $newProduct = new Product();
 
-        $newProduct->name = $request->name;
-        $newProduct->description = $request->description;
-        $newProduct->price = $request->price;
-        $newProduct->category_id = $request->category_id;
+        $newProduct->name = $request->get('nombre');
+        $newProduct->description = $request->get('description');
+        $newProduct->price = $request->get('price');
+        $newProduct->category_id = $request->get('category');
 
         if($request->hasFile('image')){
             $ruta = $request->file('image')->store('images','public');
