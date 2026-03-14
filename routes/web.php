@@ -3,6 +3,8 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\CategoryController;
+
 
 Route::get('/', HomeController::class);
 
@@ -19,6 +21,14 @@ Route::prefix('product')->controller(ProductController::class)->group(function (
     Route::delete('/{producto}', 'destroy')->name('product.destroy');
 
 });
-    Route::get('/admin', function () {
-    return view('admin.dashboard');
+Route::prefix('admin')->name('admin.')->group(function () {
+
+    // Dashboard
+    Route::get('/', function () {
+        return view('admin.dashboard');
+    })->name('dashboard');
+
+    // CRUD Categorías
+    Route::resource('categories', CategoryController::class);
+
 });

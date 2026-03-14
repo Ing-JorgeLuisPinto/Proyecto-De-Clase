@@ -42,8 +42,8 @@
         </div>
 
         <div>
-          <label for="category_id">Categoría</label>
-          <select id="category_id" name="category_id">
+          <label for="category">Categoría</label>
+          <select id="category" name="category">
             @foreach($categoryList as $category)
               <option value="{{ $category->id }}">{{ $category->name }}</option>
             @endforeach
