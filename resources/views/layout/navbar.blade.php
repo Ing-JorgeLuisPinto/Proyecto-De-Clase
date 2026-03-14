@@ -7,6 +7,8 @@
         <li><a href="#">Productos</a></li>
         <li><a href="#">Ofertas</a></li>
         <li><a href="#">Contacto</a></li>
+        <li><a href="/admin">Admin</a></li>
+        
     </ul>
 
 </nav>

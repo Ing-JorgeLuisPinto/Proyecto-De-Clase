@@ -19,3 +19,6 @@ Route::prefix('product')->controller(ProductController::class)->group(function (
     Route::delete('/{producto}', 'destroy')->name('product.destroy');
 
 });
+    Route::get('/admin', function () {
+    return view('admin.dashboard');
+});
