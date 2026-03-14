@@ -1,26 +1,53 @@
 ﻿@extends('layout.app')
 
 @section('content')
-    <div class="show-container">
-    <div class="product-detail">
-        <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
-        </div>
-        <div class="product-info">
-            <div class="product-category">Electrónica</div>
-            <div class="product-title">iPhone 14 Pro Max 256GB</div>
-            <div class="rating">★★★★★ (4.9)</div>
-            <div class="price">$4.500.000</div>
-            <div class="status available">Disponible</div>
-            <div class="description">
-                El iPhone 14 Pro Max ofrece un rendimiento excepcional gracias a su potente procesador,
-                pantalla Super Retina XDR y sistema avanzado de cámaras profesionales.
-            </div>
-            <div class="buttons">
-                <button class="btn-buy">Comprar Ahora</button>
-                <button class="btn-cart">Agregar al Carrito</button>
-            </div>
-        </div>
+
+<div class="container">
+
+<div class="product-detail">
+
+    <div class="product-image">
+
+    @if ($producto->image)
+        <img src="{{ asset('storage/'.$producto->image) }}" alt="">
+    @else
+       <img src="https://gaceta.cch.unam.mx/sites/default/files/styles/imagen_articulos_1920x1080/public/2023-09/pag_62.jpg?h=208bb47f&itok=Nj1QrlLd" alt="">
+    @endif
+
     </div>
+
+    <div class="product-meta">
+
+        <div class="product-category">
+            {{ $producto->category->name ?? 'Sin categoría' }}
+        </div>
+
+        <h1 class="product-title">
+            {{ $producto->name }}
+        </h1>
+
+        <div class="price">
+            ${{ number_format($producto->price,0,',','.') }}
+        </div>
+
+        <p class="product-description">
+            {{ $producto->description }}
+        </p>
+
+        <div class="actions">
+            <button class="btn save">
+                Comprar Ahora
+            </button>
+
+            <button class="btn cancel">
+                Agregar al carrito
+            </button>
+        </div>
+
     </div>
+
+</div>
+
+</div>
+
 @endsection

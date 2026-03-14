@@ -14,13 +14,8 @@ Route::prefix('product')->controller(ProductController::class)->group(function (
 
     Route::post('/store', 'store')->name('product.store');
 
-    Route::get('/show', 'show')->name('product.show');
+    Route::get('/{producto}', 'show')->name('product.show');
 
-    Route::get('/{producto}', 'detail')->whereNumber('producto')->name('product.detail');
-
-     Route::delete('/{producto}', 'destroy')->name('product.destroy');
-
-
-
+    Route::delete('/{producto}', 'destroy')->name('product.destroy');
 
 });

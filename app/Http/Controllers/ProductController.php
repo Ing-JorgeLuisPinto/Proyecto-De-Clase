@@ -8,6 +8,7 @@ use App\Models\Category;
 
 class ProductController extends Controller
 {
+
     public function index()
     {
         $productList = Product::orderBy('id','desc')->limit(10)->get();
@@ -28,45 +29,46 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        //VALIDACION
-        $request->validate([
-            'name' => 'required|min:5|max:250',
-            'price' => 'required|numeric',
-            'description' => 'required',
-            'image' => 'required|image',
-            'category' => 'required|exists:categories,id'
-            
-        ]);
 
+        $request->validate([
+            'nombre' => 'required|min:5|max:250',
+            'precio' => 'required|numeric',
+            'descripcion' => 'required',
+            'imagen' => 'required|image',
+            'estado' => 'required|exists:categories,id'
+        ]);
 
         $newProduct = new Product();
 
         $newProduct->name = $request->get('nombre');
-        $newProduct->description = $request->get('description');
-        $newProduct->price = $request->get('price');
-        $newProduct->category_id = $request->get('category');
+        $newProduct->description = $request->get('descripcion');
+        $newProduct->price = $request->get('precio');
+        $newProduct->category_id = $request->get('estado');
 
-        if($request->hasFile('image')){
-            $ruta = $request->file('image')->store('images','public');
+        if($request->hasFile('imagen')){
+            $ruta = $request->file('imagen')->store('images','public');
             $newProduct->image = $ruta;
-           
         }
 
         $newProduct->save();
 
         return redirect()->route('product.index')
-    ->with('success', 'Producto guardado con éxito');
+        ->with('success', 'Producto guardado con éxito');
     }
 
-    public function show(Product $product)
+    public function show(Product $producto)
     {
-        return view('product.show');
+        return view('product.show',[
+            'producto' => $producto
+        ]);
     }
 
     public function destroy(Product $producto)
     {
         $producto->delete();
+
         return redirect()->route('product.index')
-            ->with('success', 'Producto eliminado con éxito');
+        ->with('success', 'Producto eliminado con éxito');
     }
-}    
+
+}
